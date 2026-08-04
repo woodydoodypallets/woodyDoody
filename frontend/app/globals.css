@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F3EFE4;
+  color: #0B1210;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Layered "stack" card — the signature element: offset planks like stacked pallet boards */
+.stack-card {
+  position: relative;
+  background: #16211D;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 20px 40px -20px rgba(0,0,0,0.5);
+}
+.stack-card::before,
+.stack-card::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  right: -6px;
+  height: 100%;
+  border-radius: 4px;
+  z-index: -1;
+  background: #1E2C26;
+}
+.stack-card::before { top: 6px; opacity: 0.8; }
+.stack-card::after { top: 12px; left: 12px; right: -12px; background: #24352d; opacity: 0.5; z-index: -2; }
+
+.stack-card-light {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset, 0 16px 32px -18px rgba(11,18,16,0.25);
+}
+.stack-card-light::before {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: -6px;
+  height: 100%;
+  border-radius: 4px;
+  z-index: -1;
+  background: #EBE4D2;
+  opacity: 0.9;
+}
+
+/* Glass panel for hero overlays */
+.glass {
+  background: rgba(22, 33, 29, 0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.glass-light {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+/*service card visiblity set */
+.object-contain {
+    object-fit: cover;
+}
+/* Scroll reveal — pure CSS, no JS dependency. Content is never hidden;
+   it always ends at its natural, visible state (fill-mode: both handles
+   the "start invisible, end visible" without ever risking a stuck state). */
+.reveal {
+  animation: fadeUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+/* Amber gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #F2A900 0%, #C97F00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Warehouse floor grid backdrop for dark sections */
+.floor-grid {
+  background-image:
+    linear-gradient(rgba(242,169,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,169,0,0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Diagonal safety-stripe accent bar */
+.stripe-bar {
+  background: repeating-linear-gradient(
+    45deg,
+    #F2A900,
+    #F2A900 10px,
+    #0B1210 10px,
+    #0B1210 20px
+  );
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #F2A900 0%, #C97F00 100%);
+  color: #0B1210;
+  font-weight: 600;
+  transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -10px rgba(242,169,0,0.55);
+}
+
+.btn-ghost {
+  border: 1.5px solid rgba(11,18,16,0.2);
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  border-color: #F2A900;
+  background: rgba(242,169,0,0.08);
+}
+
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 0; height: 2px;
+  background: #F2A900;
+  transition: width 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.link-underline:hover::after { width: 100%; }
+
+.input-field {
+  width: 100%;
+  background: #fff;
+  border: 1.5px solid rgba(11,18,16,0.12);
+  border-radius: 4px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #F2A900;
+  box-shadow: 0 0 0 3px rgba(242,169,0,0.15);
+}
+.input-field-dark {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-field-dark::placeholder { color: rgba(255,255,255,0.35); }
+.input-field-dark:focus {
+  outline: none;
+  border-color: #F2A900;
+  box-shadow: 0 0 0 3px rgba(242,169,0,0.15);
+}
+
+/* "Photo panel" — used where a photograph would normally sit.
+   Swap for a real <img> later: just replace the div's contents. */
+.photo-panel {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #16211D 0%, #0B1210 60%, #1E2C26 100%);
+  border-radius: 6px;
+}
+.photo-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(242,169,0,0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242,169,0,0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+}
+.photo-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(242,169,0,0.18), transparent 55%);
+}
+
+/* Hover zoom for cards containing a .photo-panel */
+.hover-zoom { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+.group:hover .hover-zoom { transform: scale(1.06); }
+
+/* Card overlay reveal on hover */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,18,16,0.92) 0%, rgba(11,18,16,0.2) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.group:hover .card-overlay { opacity: 1; }
+
+.icon-badge {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(242,169,0,0.12);
+  color: #C97F00;
+  transition: background 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+.group:hover .icon-badge,
+.icon-badge-hover:hover {
+  background: linear-gradient(135deg, #F2A900 0%, #C97F00 100%);
+  color: #0B1210;
+  transform: translateY(-2px) rotate(-4deg);
+}
+
+/* Real photo card — used with next/image for actual photography */
+.photo-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+.photo-card img {
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.photo-card:hover img {
+  transform: scale(1.08);
+}
+.photo-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(11,18,16,0.85) 0%, rgba(11,18,16,0.1) 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.photo-card:hover .photo-card-overlay { opacity: 1; }
+
+.star-rating { color: #F2A900; letter-spacing: 2px; }

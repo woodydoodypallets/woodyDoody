@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: pallet_user
+      POSTGRES_PASSWORD: pallet_pass
+      POSTGRES_DB: pallet_company
+    volumes:
+      - pallet_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://pallet_user:pallet_pass@db:5432/pallet_company
+      JWT_SECRET_KEY: change-this-secret-in-production
+      JWT_REFRESH_SECRET_KEY: change-this-refresh-secret-too
+      CORS_ORIGINS: http://localhost:3000
+      ADMIN_EMAIL: admin@akpalletblocks.com
+      ADMIN_PASSWORD: ChangeMe123!
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000
+    restart: unless-stopped
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      API_URL_INTERNAL: http://backend:8000
+    ports:
+      - "3000:3000"
+
+volumes:
+  pallet_db_data:
