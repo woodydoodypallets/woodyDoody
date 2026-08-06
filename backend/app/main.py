@@ -23,7 +23,7 @@ app = FastAPI(title="Woody Doody Pallets API", version="1.0.0")
 # just fails with a generic "Failed to fetch" in the browser, no useful
 # error anywhere. Strip both defensively so a slightly-off env var value
 # (very easy to introduce when copy-pasting a Railway domain) still works.
-origins = [o.strip().rstrip("/") for o in os.getenv("CORS_ORIGINS", "http://localhost:3000").split(",") if o.strip()]
+origins = [o.strip().rstrip("/") for o in os.getenv("CORS_ORIGINS", "https://woodypallets.com").split(",") if o.strip()]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
