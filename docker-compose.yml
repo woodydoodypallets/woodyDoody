@@ -8,8 +8,6 @@ services:
       POSTGRES_DB: pallet_company
     volumes:
       - pallet_db_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
 
   backend:
     build: ./backend
@@ -18,27 +16,43 @@ services:
       - db
     environment:
       DATABASE_URL: postgresql://pallet_user:pallet_pass@db:5432/pallet_company
-      JWT_SECRET_KEY: change-this-secret-in-production
-      JWT_REFRESH_SECRET_KEY: change-this-refresh-secret-too
-      CORS_ORIGINS: http://localhost:3000
+      JWT_SECRET_KEY: vK8mQ2rL7xP4nT9wY6cH3sF1jD5aZ0uB8eG4iN6oR2
+      JWT_REFRESH_SECRET_KEY: qR6zN1pX8cV3mK7sL2wH9dF4gB0yT5uJ8aE6iO3nS7
+      CORS_ORIGINS: https://woodypallets.com,http://woodypallets.com
       ADMIN_EMAIL: admin@akpalletblocks.com
       ADMIN_PASSWORD: ChangeMe123!
-    ports:
-      - "8000:8000"
+    expose:
+      - "8000"
 
   frontend:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: http://localhost:8000
+        NEXT_PUBLIC_API_URL: /api
     restart: unless-stopped
     depends_on:
       - backend
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:8000
+      NEXT_PUBLIC_API_URL: /api
       API_URL_INTERNAL: http://backend:8000
+    expose:
+      - "3000"
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - frontend
+      - backend
+    command: ["sh", "-c", "printf '%s\n' 'woodypallets.com {' '  encode gzip' '  handle_path /api/* {' '    reverse_proxy backend:8000' '  }' '  reverse_proxy frontend:3000' '}' > /etc/caddy/Caddyfile && caddy run --config /etc/caddy/Caddyfile --adapter caddyfile"]
     ports:
-      - "3000:3000"
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
 
 volumes:
   pallet_db_data:
+  caddy_data:
+  caddy_config:
