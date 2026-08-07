@@ -13,7 +13,7 @@
 // `||`, an explicitly-set empty string ("" — used for same-origin routing)
 // is falsy and would incorrectly fall through to the localhost default.
 // `??` only falls through when the variable is actually unset.
-const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? "https://woodypallets.com";
 const SERVER_API_URL = process.env.API_URL_INTERNAL ?? PUBLIC_API_URL;
 
 function getApiUrl(): string {
