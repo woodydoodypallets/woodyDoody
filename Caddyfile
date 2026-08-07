@@ -1,0 +1,9 @@
+{$DOMAIN_NAME:localhost}, www.{$DOMAIN_NAME:localhost} {
+    encode gzip
+
+    handle_path /api/* {
+        reverse_proxy backend:8000
+    }
+
+    reverse_proxy frontend:3000
+}
