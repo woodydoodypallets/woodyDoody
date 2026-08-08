@@ -13,8 +13,11 @@
 // `||`, an explicitly-set empty string ("" — used for same-origin routing)
 // is falsy and would incorrectly fall through to the localhost default.
 // `??` only falls through when the variable is actually unset.
-const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? ""  || "http://backend:8000";
-const SERVER_API_URL = process.env.API_URL_INTERNAL ?? PUBLIC_API_URL;
+//const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? ""  || "http://backend:8000";
+//const SERVER_API_URL = process.env.API_URL_INTERNAL ?? PUBLIC_API_URL;
+const PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+const SERVER_API_URL = process.env.API_URL_INTERNAL || "http://backend:8000";
+
 
 function getApiUrl(): string {
   // No `window` means this code is running server-side (Node.js), not in the browser.
