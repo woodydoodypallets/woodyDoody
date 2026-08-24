@@ -85,7 +85,7 @@ export default async function GalleryPage() {
                 Like what you <span className="text-gradient">see?</span>
               </h2>
               <p className="text-mist max-w-md mx-auto mb-8">
-                Tell us what you need and we&apos;ll get a quote back to you fast.
+                Tell us your pallet size, quantity, and delivery location. we&apos;ll work to find the right solution and get you a quote fast.
               </p>
               <Link href="/quote" className="btn-primary font-display uppercase text-sm tracking-wide px-8 py-3.5 rounded-sm inline-block">
                 Request a quote
