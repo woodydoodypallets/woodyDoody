@@ -249,7 +249,7 @@ export default async function Home() {
       )}
 
       {/* FACILITY GALLERY */}
-      {gallery.length > 0 && (
+      {/*gallery.length > 0 && (
         <section className="bg-kraft2 py-24">
           <div className="max-w-7xl mx-auto px-5 md:px-8">
             <Reveal>
@@ -290,7 +290,7 @@ export default async function Home() {
             </Reveal>
           </div>
         </section>
-      )}
+      )*/}
 
       {/* TESTIMONIALS */}
       {testimonials.length > 0 && (
