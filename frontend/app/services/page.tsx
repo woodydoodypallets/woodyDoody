@@ -72,7 +72,7 @@ export default async function ServicesPage() {
           </Reveal>
           <Reveal delay={160}>
             <p className="text-mist text-lg mt-6 leading-relaxed max-w-xl">
-              AK Pallet Blocks provides practical pallet solutions for businesses across
+              Woody Doody Plallets provides practical pallet solutions for businesses across
               the Dallas–Fort Worth area. Whether you need standard pallets, recurring
               deliveries, recycled options, or a custom size, we&apos;ll help you find the
               right solution for your operation.
