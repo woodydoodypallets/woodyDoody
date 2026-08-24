@@ -57,9 +57,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 className="w-10 h-10 object-contain"
                 priority
               />
-              <span className="font-display uppercase tracking-wide text-[15px] text-white leading-none">
-                Woody <span className="text-amber">Doody Pallets</span>
-              </span>
+              
+              <span class="font-display uppercase tracking-wide text-[15px] text-white leading-none">Woody <span class="text-amber ai-style-change-1">Doody Pallets</span></span>
             </Link>
 
             <div className="hidden md:flex items-center gap-7 text-[13px] font-display uppercase tracking-wider text-mist">
