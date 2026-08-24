@@ -72,10 +72,11 @@ export default async function ServicesPage() {
           </Reveal>
           <Reveal delay={160}>
             <p className="text-mist text-lg mt-6 leading-relaxed max-w-xl">
-              Woody Doody Plallets provides practical pallet solutions for businesses across
-              the Dallas–Fort Worth area. Whether you need standard pallets, recurring
-              deliveries, recycled options, or a custom size, we&apos;ll help you find the
-              right solution for your operation.
+              Woody Doody Pallets was built on hard work, honest service, and a commitment 
+              to doing the job right. We source new, recycled, custom, and heat-treated 
+              pallets to meet the needs of businesses across the Dallas–Fort Worth area 
+              — with dependable service, competitive pricing, and delivery you can count on.
+
             </p>
           </Reveal>
         </div>
