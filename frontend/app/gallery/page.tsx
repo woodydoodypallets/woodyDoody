@@ -34,8 +34,7 @@ export default async function GalleryPage() {
           </Reveal>
           <Reveal delay={160}>
             <p className="text-mist text-lg mt-6 leading-relaxed max-w-xl">
-              Our pallets, our yard, and the work that goes into every delivery across
-              the Dallas–Fort Worth area.
+              From standard and recycled pallets to custom and heat-treated options, we source the right pallet solution for your business.
             </p>
           </Reveal>
         </div>
