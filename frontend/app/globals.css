@@ -245,6 +245,9 @@ body {
 .photo-card:hover img {
   transform: scale(1.08);
 }
+span.text-amber.ai-style-change-1 {
+  display: block;
+}
 .photo-card-overlay {
   position: absolute;
   inset: 0;
